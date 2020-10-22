@@ -19,12 +19,37 @@
 
   console.log(db);
 
+  //create Posts
+  function createPosts(title, time, content) {
+      let div = document.createElement('div');
+      div.setAttribute('class','col-md-4');
+
+      let h2 = document.createElement('h2');
+      let p = document.createElement('p');
+      let small = document.createElement('small');
+
+      h2.textContent = title;
+      small.textContent = time;
+      p.textContent = content;
+
+      div.appendChild(h2);
+      div.appendChild(small);
+      div.appendChild(p);
+
+      postCollection.appendChild(div);
+  }
+
+  //get Posts
   function getPosts() {
     db.collection("posts")
       .get()
       .then(snapshot => {
         snapshot.docs.forEach(docs => {
-            console.log(docs.data());
+            createPosts(
+                docs.data().postName,
+                docs.data().createdAt,
+                docs.data().postContent
+            )
         });
       })
       .catch(err => {
