@@ -19,17 +19,17 @@
 
   console.log(db);
 
-   function getPosts() {
-       db.collection("posts")
-       .get()
-       .then(snapshot => {
-           snapshot.docs.forEach(docs => {
-               console.log(docs.data);
-           });
-       })
-       .catch(err => {
-            console.log(err); 
-       })
-   }
-
-   getPosts();
+  function getPosts() {
+    db.collection("posts")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(docs => {
+            console.log(docs.data());
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  
+  getPosts();
