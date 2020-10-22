@@ -12,21 +12,24 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
 
   let postCollection = document.querySelector('#posts-collection');
 
   const db = firebase.firestore();
+
+  console.log(db);
 
    function getPosts() {
        db.collection("posts")
        .get()
        .then(snapshot => {
            snapshot.docs.forEach(docs => {
-               console.log(docs);
+               console.log(docs.data);
            });
        })
        .catch(err => {
             console.log(err); 
        })
    }
+
+   getPosts();
