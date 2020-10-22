@@ -15,3 +15,15 @@
   firebase.analytics();
 
   let postCollection = document.querySelector('#posts-collection');
+
+  const db = firebase.firestore();
+
+   function getPosts() {
+       db.collection("posts")
+       .get()
+       .then(snapshot => {
+           snapshot.docs.forEach(docs => {
+               console.log(docs);
+           });
+       });
+   }
