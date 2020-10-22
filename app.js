@@ -25,5 +25,8 @@
            snapshot.docs.forEach(docs => {
                console.log(docs);
            });
-       });
+       })
+       .catch(err => {
+            console.log(err); 
+       })
    }
